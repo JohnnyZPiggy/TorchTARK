@@ -38,7 +38,11 @@ Read [docs/WORKFLOW.md](docs/WORKFLOW.md) for team roles and evidence gates.
 
 ## Boundaries
 
-- Never create or modify notebooks (`notebooks/*.ipynb`); GPT owns them.
+- Coordinator/user exclusively owns and maintains all Colab notebooks, runtime
+  and Drive setup, CPU/GPU experiment execution, and result relay to GPT.
+  Neither GPT nor Codex creates or modifies notebooks (`notebooks/*.ipynb`).
+  Codex maintains Python modules, tests, scripts, benchmarks and CLI; GPT
+  reviews the coordinator's actual outputs and records findings on GitHub.
 - Never push directly to `main` or merge PRs.
 - Never modify the original author's excluded ZIP or extracted reference code.
 - Keep the existing local worktree in its current Dropbox location; do not

@@ -6,9 +6,9 @@ Repository: https://github.com/JohnnyZPiggy/TorchTARK
 
 | Role | Responsibility | Command |
 | --- | --- | --- |
-| Coordinator/user | Priorities, authorization, Colab runtime/Drive permissions, final merge decisions | Summons the relevant agent |
-| GPT/project manager | Mathematical specifications, task allocation, independent review, all notebook authoring | **检查 GitHub** |
-| Codex/engineer | Authorized Python source, experiments, tests and non-notebook utilities; feature-branch PR delivery | **推进 GitHub 任务** |
+| Coordinator/user | GitHub/Colab coordination, priorities, authorization, final merge decisions; exclusive notebook creation/maintenance, runtime/Drive setup, actual CPU/GPU runs and result relay to GPT | Summons the relevant agent |
+| GPT/project manager | Mathematical/algorithmic specifications, task allocation, independent code and experiment-result review; no notebook creation or edits | **检查 GitHub** |
+| Codex/engineer | Authorized Python package, experiments, tests, scripts, benchmarks and CLI; feature-branch PR delivery; no notebook creation or edits | **推进 GitHub 任务** |
 
 Codex **检查 GitHub** / **Check GitHub** alone means read-only inspection and
 reporting unless execution is explicitly authorized. Codex's execution command
@@ -32,23 +32,31 @@ to start; read their latest authorization and dependency decisions.
    Codex never pushes directly to `main` or merges PRs; GPT must not merge
    without explicit coordinator approval. Contract changes also require a PR
    and coordinator approval.
-5. **Colab validation when required:** GPT authors a thin notebook invoking
-   tested Python CLI/modules at a verified immutable commit, without duplicating
-   numerical kernels. The coordinator starts the runtime, grants Drive access,
-   supplies a real destination and runs it. GPT reviews the accessible artifacts.
-   Notebook creation or merge alone does not prove GPU execution.
+5. **Coordinator-owned Colab validation when required:** The coordinator alone
+   writes and maintains a minimal notebook invoking tested Codex-maintained
+   Python CLI/modules at a verified immutable commit with an explicit `--device`,
+   without duplicating numerical kernels. The coordinator sets up the runtime
+   and Drive destination, executes CPU/GPU experiments and shares real outputs,
+   logs and manifests directly with GPT. GPT reviews numerical/device evidence
+   and records confirmed findings and feedback on GitHub. Neither GPT nor Codex
+   creates or edits notebooks; no notebook PR from either AI is required.
+   Notebook creation alone does not prove GPU execution.
 
 TASK-000 (#1 / PR #3) established the CPU smoke workflow. TASK-001 (#2) records
-this protocol. TASK-002 (#4 / GPT-owned PR #5) is the separate real-CUDA gate;
-its pending GPU execution does not block explicitly authorized documentation.
+this protocol. TASK-002 (#4) is the coordinator-owned real-CUDA gate; its pending
+GPU execution does not block explicitly authorized documentation. The earlier
+notebook proposal PR #5 was closed without merge and is superseded by this
+coordinator-exclusive ownership contract.
 
 ## Evidence and source of truth
 
 - **Issues:** requirements, decisions, authorization, dependencies and blockers.
 - **PRs:** changed files, implementation, commands/results, GPT review and revisions.
 - **Commits:** exact reproducible source version. Include the full SHA in handoffs.
-- **Google Drive:** persistent Colab datasets and run artifacts. Link the specific
-  accessible run folder in the Issue/PR and include its commit SHA and manifest.
+- **Google Drive / Colab:** coordinator-controlled notebooks, environment and
+  persistent run artifacts. The coordinator shares actual outputs/logs/manifests
+  directly with GPT; GPT records confirmed findings in the Issue/PR. Include
+  commit SHA and a specific accessible run-folder reference when practical.
   A sync icon is not verification.
 
 For each test/experiment, report exact commands, exit/results, environment and
@@ -77,8 +85,9 @@ automation; connecting GitHub does not start background execution.
 4. After the current gate passes, create or update exactly the next necessary
    Issue with scope, acceptance, priority, dependencies and owner. Avoid duplicates
    or contradictory assignments; explicitly gate authorization.
-5. Own notebook changes and mathematical review. Never merge without approval
-   or claim unseen results or autonomous background work.
+5. Own mathematical review and assess the coordinator's actual Colab outputs;
+   never create or edit notebooks. Never merge without approval or claim unseen
+   results or autonomous background work.
 
 ## Starting a new Codex session
 
@@ -91,7 +100,8 @@ status. If the instructions or required access are unavailable, report the gap;
 do not assume another agent's chat supplies them.
 
 Never modify the excluded original reference archive/source or move/reorganize
-the local worktree. Codex never edits notebooks. Ask the coordinator only when
+the local worktree. The coordinator exclusively creates and maintains notebooks;
+neither GPT nor Codex edits them. Ask the coordinator only when
 approval, credentials, unavailable permissions/capabilities, conflicting
 requirements or an important decision are required. Authentication or Git
 configuration failures must be reported without workarounds.
