@@ -32,7 +32,7 @@ Read [docs/WORKFLOW.md](docs/WORKFLOW.md) for team roles and evidence gates.
    corresponding PR targeting `main`, linking the Issue with `Refs #N`.
    Publish progress, exact commit SHA, test evidence, limitations and blockers
    on GitHub, not only in chat. Verify pushed SHA and final working-tree status.
-6. Stop after this task for GPT review and coordinator merge. Do not begin
+6. Stop after this task for GPT review and delegated technical merge. Do not begin
    another task until another instruction. When blocked or awaiting review or
    coordinator Colab execution, publish that state and stop.
 
@@ -44,6 +44,16 @@ Read [docs/WORKFLOW.md](docs/WORKFLOW.md) for team roles and evidence gates.
   Codex maintains Python modules, tests, scripts, benchmarks and CLI; GPT
   reviews the coordinator's actual outputs and records findings on GitHub.
 - Never push directly to `main` or merge PRs.
+- GPT, as technical lead, may merge passing, independently reviewed PRs into
+  `main` without per-PR coordinator approval under delegated authority. Before
+  merge GPT must inspect the latest head/diff, requirements, evidence and
+  blockers; never merge incomplete, unsafe, out-of-scope or stale PRs. Distinguish
+  CPU success from pending real GPU validation. Report PR URL and exact merge
+  SHA, and authorize subsequent tasks only after their prerequisite gate passes.
+- The coordinator retains final direction, priorities and veto, and may revoke
+  or narrow GPT's merge authority at any time. Escalate material direction
+  conflicts, destructive changes, security/access issues and unclear high-stakes
+  decisions to the coordinator. This delegation never permits Codex to merge.
 - Never modify the original author's excluded ZIP or extracted reference code.
 - Keep the existing local worktree in its current Dropbox location; do not
   move, copy or reorganize it.
@@ -54,4 +64,6 @@ Read [docs/WORKFLOW.md](docs/WORKFLOW.md) for team roles and evidence gates.
   access to another agent's private chat or unseen, unpushed local changes.
 - Repository connectivity does not trigger background work. Execution requires
   a coordinator invocation or a separately configured supported automation.
-- Changes to this collaboration contract require a PR and coordinator approval.
+- Changes to this collaboration contract require a reviewed PR within the
+  coordinator's delegated authority; changes to that authority require the
+  coordinator's decision.
