@@ -1,0 +1,26 @@
+.tmp.drive*/
+/Randomized-Kaczmarz-with-Tail-Averaging-main.zip
+/Randomized-Kaczmarz-with-Tail-Averaging-main/
+
+# Python caches and virtual environments
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+.env/
+
+# Local benchmark outputs and temporary files
+/benchmark_outputs/
+/benchmarks/outputs/
+/results/
+/outputs/
+/tmp/
+/temp/
+*.tmp
+*.temp
+*.log
+*~
