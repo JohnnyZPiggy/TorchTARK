@@ -6,8 +6,8 @@ Repository: https://github.com/JohnnyZPiggy/TorchTARK
 
 | Role | Responsibility | Command |
 | --- | --- | --- |
-| Coordinator/user | GitHub/Colab coordination, priorities, authorization, final merge decisions; exclusive notebook creation/maintenance, runtime/Drive setup, actual CPU/GPU runs and result relay to GPT | Summons the relevant agent |
-| GPT/project manager | Mathematical/algorithmic specifications, task allocation, independent code and experiment-result review; no notebook creation or edits | **检查 GitHub** |
+| Coordinator/user | Final project direction, priorities, authorization and veto; may revoke/narrow GPT merge authority; exclusive notebook creation/maintenance, runtime/Drive setup, actual CPU/GPU runs and result relay to GPT | Summons the relevant agent |
+| GPT/technical lead | Mathematical/algorithmic specifications, task allocation, independent code/evidence review, acceptance/change requests and delegated technical PR merges; no notebook creation or edits | **检查 GitHub** |
 | Codex/engineer | Authorized Python package, experiments, tests, scripts, benchmarks and CLI; feature-branch PR delivery; no notebook creation or edits | **推进 GitHub 任务** |
 
 Codex **检查 GitHub** / **Check GitHub** alone means read-only inspection and
@@ -28,10 +28,18 @@ to start; read their latest authorization and dependency decisions.
    acceptance criteria. Write actionable feedback on GitHub. Codex handles
    authorized revisions on a later invocation. Waiting for review does not
    authorize unrelated work.
-4. **Coordinator merge:** Only the coordinator decides whether to merge.
-   Codex never pushes directly to `main` or merges PRs; GPT must not merge
-   without explicit coordinator approval. Contract changes also require a PR
-   and coordinator approval.
+4. **Delegated GPT technical merge:** GPT may merge passing, independently
+   reviewed PRs into `main` without per-PR coordinator approval. Before merging,
+   inspect the latest PR head/diff, requirements, evidence and blockers. Do not
+   merge incomplete, unsafe, out-of-scope or stale PRs. Distinguish CPU passing
+   from pending real GPU validation. Report the PR URL and exact merge SHA;
+   authorize subsequent tasks only after their prerequisite gate passes.
+   The coordinator retains final direction, priorities and veto, and can revoke
+   or narrow this authority at any time. Escalate material project-direction
+   conflicts, destructive changes, security/access issues and unclear high-stakes
+   decisions to the coordinator. Codex never pushes directly to `main` or merges
+   PRs. Contract changes require a reviewed PR within delegated authority;
+   changes to that authority require the coordinator's decision.
 5. **Coordinator-owned Colab validation when required:** The coordinator alone
    writes and maintains a minimal notebook invoking tested Codex-maintained
    Python CLI/modules at a verified immutable commit with an explicit `--device`,
@@ -79,15 +87,16 @@ automation; connecting GitHub does not start background execution.
 1. Read open and relevant recently updated Issues/PRs, latest comments/reviews,
    commits/diffs, available CI status and linked accessible reports.
 2. Compare code and evidence with acceptance criteria. Distinguish pass, needs
-   changes, blocked, awaiting GPU validation and awaiting coordinator merge.
+   changes, blocked, awaiting GPU validation and awaiting technical merge.
 3. Give the coordinator a compact factual summary with links and unverified
    limitations; publish actionable review feedback in the relevant PR/Issue.
 4. After the current gate passes, create or update exactly the next necessary
    Issue with scope, acceptance, priority, dependencies and owner. Avoid duplicates
    or contradictory assignments; explicitly gate authorization.
 5. Own mathematical review and assess the coordinator's actual Colab outputs;
-   never create or edit notebooks. Never merge without approval or claim unseen
-   results or autonomous background work.
+   never create or edit notebooks. Merge only after the review gate above and
+   within current delegated authority; report the PR URL and exact merge SHA.
+   Never claim unseen results or autonomous background work.
 
 ## Starting a new Codex session
 
