@@ -1,0 +1,155 @@
+{
+  "status": "success",
+  "exit_status": 0,
+  "selected_device": "cuda",
+  "actual_tensor_device": "cuda:0",
+  "cuda_available": true,
+  "gpu_name": "Tesla T4",
+  "pytorch_version": "2.11.0+cu130",
+  "source_commit": "4b427d7b54a8f88e50261a2aa6ccf648306eedb1",
+  "timestamp_utc": "2026-10-17T17:55:07.150760+00:00",
+  "dtype": "torch.float32",
+  "parameters": {
+    "n_rows": 1024,
+    "n_cols": 64,
+    "num_steps": 500,
+    "warmup": 2,
+    "repeats": 8,
+    "seed": 7,
+    "chain_counts": [
+      1,
+      8,
+      32,
+      128,
+      256,
+      512
+    ]
+  },
+  "measurements": [
+    {
+      "chains": 1,
+      "elapsed_ms": [
+        57.35328099990511,
+        57.31520199992701,
+        55.50412000002325,
+        56.319776999998794,
+        55.9152929999982,
+        56.65131800014933,
+        61.477550000063275,
+        59.8752500000046
+      ],
+      "median_ms": 56.98326000003817,
+      "min_ms": 55.50412000002325,
+      "max_ms": 61.477550000063275,
+      "chains_per_second": 17.549013517291396,
+      "chain_steps_per_second": 8774.506758645697,
+      "output_finite": true,
+      "output_checksum": -1.1226463065249845
+    },
+    {
+      "chains": 8,
+      "elapsed_ms": [
+        59.4527079999807,
+        58.795407999923555,
+        58.162663000075554,
+        59.26128300006894,
+        60.45170699985647,
+        59.94453199991767,
+        58.953872000074625,
+        58.900864000179354
+      ],
+      "median_ms": 59.107577500071784,
+      "min_ms": 58.162663000075554,
+      "max_ms": 60.45170699985647,
+      "chains_per_second": 135.34643675745778,
+      "chain_steps_per_second": 67673.2183787289,
+      "output_finite": true,
+      "output_checksum": -3.277811642488814
+    },
+    {
+      "chains": 32,
+      "elapsed_ms": [
+        57.660854999994626,
+        57.75065700004234,
+        59.56335099995158,
+        62.79993699990882,
+        63.27085799989618,
+        58.99166299991521,
+        61.52159900011611,
+        58.552550000058545
+      ],
+      "median_ms": 59.277506999933394,
+      "min_ms": 57.660854999994626,
+      "max_ms": 63.27085799989618,
+      "chains_per_second": 539.83376865083,
+      "chain_steps_per_second": 269916.884325415,
+      "output_finite": true,
+      "output_checksum": -11.90983632917414
+    },
+    {
+      "chains": 128,
+      "elapsed_ms": [
+        61.5434799999548,
+        60.98131099997772,
+        59.53007600010096,
+        58.77126800010046,
+        58.796057999870754,
+        77.7891660000023,
+        71.81069600005685,
+        60.682012999905055
+      ],
+      "median_ms": 60.83166199994139,
+      "min_ms": 58.77126800010046,
+      "max_ms": 77.7891660000023,
+      "chains_per_second": 2104.1673988805915,
+      "chain_steps_per_second": 1052083.6994402958,
+      "output_finite": true,
+      "output_checksum": -41.172701271562346
+    },
+    {
+      "chains": 256,
+      "elapsed_ms": [
+        72.67593500000658,
+        84.5871100000295,
+        73.55735900000582,
+        66.60686200007149,
+        66.6960169999129,
+        63.711528000112594,
+        68.99996299989652,
+        64.19744899994839
+      ],
+      "median_ms": 67.84798999990471,
+      "min_ms": 63.711528000112594,
+      "max_ms": 84.5871100000295,
+      "chains_per_second": 3773.1405160323766,
+      "chain_steps_per_second": 1886570.2580161884,
+      "output_finite": true,
+      "output_checksum": -75.03457931606135
+    },
+    {
+      "chains": 512,
+      "elapsed_ms": [
+        66.54884999989008,
+        60.7819639999434,
+        58.88260100005027,
+        63.62788000001274,
+        62.701634000177364,
+        60.44964200009417,
+        63.058609000108845,
+        60.45051599994622
+      ],
+      "median_ms": 61.74179900006038,
+      "min_ms": 58.88260100005027,
+      "max_ms": 66.54884999989008,
+      "chains_per_second": 8292.599313465085,
+      "chain_steps_per_second": 4146299.6567325424,
+      "output_finite": true,
+      "output_checksum": -154.04399238686983
+    }
+  ],
+  "random_policy": "One seeded CPU generator: float32 randn A then b, then norm-squared replacement multinomial max(K)*T rows reshaped [max(K),T]; each K uses prefix; transfers before timing",
+  "timing_method": "perf_counter wall clock; CUDA synchronize before/after every timed call; warmups unrecorded",
+  "timed_region": "public tark_batched including validation, default zero x0 and burn_in=T//2",
+  "excluded": "generation, stochastic sampling, transfers, output checks, JSON and stdout",
+  "caveats": "Batch latency and aggregate chain throughput, not single-chain speedup. K=1 uses batched API, not comparable to scalar tark benchmark. Compare CPU/GPU only with matched inputs in same runtime."
+}
