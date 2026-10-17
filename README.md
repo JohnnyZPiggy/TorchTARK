@@ -30,6 +30,25 @@ The correctness CLI records deterministic consistent/inconsistent worked
 examples, actual device, dtype and Git commit when available in `manifest.json`.
 Real CUDA validation requires CUDA hardware; no performance claim is made.
 
+Run the eager fixed-row baseline benchmark (use `--device cuda` for CUDA):
+
+```bash
+python -m experiments.tark_benchmark --device cpu --output-dir outputs/bench_cpu --n-rows 1024 --n-cols 64 --num-steps 500 --warmup 2 --repeats 5 --seed 7
+```
+
+CPU-seeded float32 normal inputs and norm-squared sampled row indices are
+generated once, then transferred before timing. Only the public solver call
+(including its validation, zero initialization and default half burn-in) is
+timed with `perf_counter`; CUDA synchronizes before/after every measured call.
+Generation, transfers, stochastic index generation, output checks and reporting
+are excluded: this is fixed-row replay, not end-to-end stochastic sampling.
+Each repeat uses identical data/indices and checks output agreement. Manifests
+include all durations, summary statistics, parameters, commit and environment.
+Limits: 10M matrix elements, 1M rows, 100k steps, 100 total calls and 100M
+step×call×column work units. Failures return nonzero and write a manifest when
+possible; external process termination cannot guarantee a manifest. GPU results
+remain pending actual coordinator runs; no comparative acceleration is claimed.
+
 Install dependencies with `python -m pip install -r requirements.txt`.
 From the repository root, run the device smoke check:
 
