@@ -61,6 +61,37 @@ latency. Compare matched CPU/GPU batched workloads in the same runtime;
 throughput is not single-chain speedup. GPU scaling evidence remains pending
 coordinator execution; no acceleration is assumed.
 
+Inspect eager batched operators (instrumentation, not a benchmark):
+
+```bash
+python -m experiments.tark_batched_profile --device cpu --output-dir outputs/profile_cpu --n-rows 1024 --n-cols 64 --num-steps 100 --chain-counts 1,128,512 --warmup 2 --seed 7
+```
+
+Use `--device cuda` for actual coordinator GPU profiling. One separate
+`torch.profiler` context per K records one unchanged public solver call, CPU
+activities plus CUDA when supported; shapes/memory/stacks disabled. Seeded CPU
+float32 inputs and max-K weighted row histories are transferred beforehand;
+warmups and CUDA synchronization boundaries are outside the profiled call.
+Manifests contain top 30 operators sorted by self CPU time, requested diagnostic
+operators when present, counts and time totals in microseconds. Missing device
+API fields are null; kernel-only counts are explicitly unavailable rather than
+inferred from operator calls. Source SHA is null when Git is unavailable.
+Caps: four K values, K<=512, T<=100, warmup<=10, n<=100k, n*d<=1M,
+Kmax*T<=51200, Kmax*d<=131072, and sum(K)*T*d*(warmup+1)<=200M.
+No Chrome traces, cProfile or unprofiled timing are exported in this minimal CLI.
+Thus no trace upload/storage budget is required; profiler events are bounded by
+the workload limits. Output is local only; no credentials or token access.
+Review any exported metadata before sharing. Unsupported profiler APIs or
+missing CUDA fail with a failure manifest when possible; external termination
+cannot guarantee one. Existing untracked files are never managed by this CLI.
+
+Inclusive operator costs overlap and cannot be added into wall time or
+subtracted to isolate Python-loop overhead. Indexing, dispatch and implicit
+host synchronization are hypotheses until measured on actual CUDA. T=100
+profiling is not comparable to historical T=500 latency. Use the reviewed
+batched benchmark CLI for comparative performance; GPU profiling remains
+pending coordinator execution. No compile/custom kernels or optimization here.
+
 ```bash
 python -m experiments.tark_correctness --device cpu --output-dir outputs/tark_cpu
 python -m experiments.tark_correctness --device cuda --output-dir outputs/tark_cuda
