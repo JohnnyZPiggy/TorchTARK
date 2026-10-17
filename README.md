@@ -39,6 +39,28 @@ The CLI compares K=1/K=3 worked examples against stacked scalar calls and
 writes device/commit/comparison evidence. Real CUDA validation is coordinator-run;
 no batched throughput or speedup claim is made.
 
+Measure independent-chain batch latency and aggregate throughput:
+
+```bash
+python -m experiments.tark_batched_benchmark --device cpu --output-dir outputs/batched_bench_cpu --n-rows 1024 --n-cols 64 --num-steps 500 --chain-counts 1,8,32,128,512 --warmup 2 --repeats 5 --seed 7
+```
+
+Use `--device cuda` for coordinator-run GPU measurements. CPU float32 A/b and
+max-K weighted row histories are generated once with one seeded CPU generator;
+each requested K uses a prefix, transferred before timing. Only public
+`tark_batched` (including validation, zero x0 and half burn-in) is timed;
+CUDA synchronizes before/after every measured call. Warmups, generation,
+transfers, checks and reporting are excluded. JSON includes per-K raw/summary
+latency in ms, chains/s, chain-steps/s, output diagnostics and source metadata.
+Duplicate/nonpositive counts fail. Limits: 32 K values, 10M matrix elements,
+1M rows, 2M max-K×T and max-K×d, 100k steps, 100 total calls/K, 5M aggregate
+chain-steps including warmups, and 500M chain-step×column work units.
+Partial failures remain failures; external termination may prevent a manifest.
+K=1 still uses the batched solver and is not comparable with scalar `tark`
+latency. Compare matched CPU/GPU batched workloads in the same runtime;
+throughput is not single-chain speedup. GPU scaling evidence remains pending
+coordinator execution; no acceleration is assumed.
+
 ```bash
 python -m experiments.tark_correctness --device cpu --output-dir outputs/tark_cpu
 python -m experiments.tark_correctness --device cuda --output-dir outputs/tark_cuda
