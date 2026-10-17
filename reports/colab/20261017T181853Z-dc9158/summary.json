@@ -1,0 +1,618 @@
+{
+  "task": "TASK-013",
+  "issue_number": 31,
+  "experiment_type": "batched_tark_operator_profiling",
+  "cli_module": "experiments.tark_batched_profile",
+  "run_id": "20261017T181853Z-dc9158",
+  "source_commit": "325e1abbc27bf0a8aa6bec52b90596b7a30b3ee8",
+  "status": "PASS",
+  "validation_errors": [],
+  "gpu_name": "Tesla T4",
+  "configuration": {
+    "n_rows": 1024,
+    "n_cols": 64,
+    "num_steps": 100,
+    "chain_counts": [
+      1,
+      128,
+      512
+    ],
+    "warmup": 2,
+    "seed": 7
+  },
+  "operator_time_units": "microseconds",
+  "per_device_k": [
+    {
+      "Device": "CPU",
+      "K": 1,
+      "Operator groups": 39,
+      "Operator calls": 2596,
+      "Missing API fields": "None",
+      "Checksum close": true
+    },
+    {
+      "Device": "CUDA",
+      "K": 1,
+      "Operator groups": 63,
+      "Operator calls": 4461,
+      "Missing API fields": "None",
+      "Checksum close": true
+    },
+    {
+      "Device": "CPU",
+      "K": 128,
+      "Operator groups": 40,
+      "Operator calls": 2596,
+      "Missing API fields": "None",
+      "Checksum close": true
+    },
+    {
+      "Device": "CUDA",
+      "K": 128,
+      "Operator groups": 64,
+      "Operator calls": 4461,
+      "Missing API fields": "None",
+      "Checksum close": true
+    },
+    {
+      "Device": "CPU",
+      "K": 512,
+      "Operator groups": 40,
+      "Operator calls": 2616,
+      "Missing API fields": "None",
+      "Checksum close": true
+    },
+    {
+      "Device": "CUDA",
+      "K": 512,
+      "Operator groups": 64,
+      "Operator calls": 4461,
+      "Missing API fields": "None",
+      "Checksum close": true
+    }
+  ],
+  "top10_operators": [
+    {
+      "Device": "CPU",
+      "K": 1,
+      "Rank": 1,
+      "Operator": "aten::abs",
+      "Calls": 10,
+      "Self CPU (us)": 2313.616999999999,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CPU",
+      "K": 1,
+      "Rank": 2,
+      "Operator": "aten::all",
+      "Calls": 4,
+      "Self CPU (us)": 1914.4279999999994,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CPU",
+      "K": 1,
+      "Rank": 3,
+      "Operator": "aten::index",
+      "Calls": 301,
+      "Self CPU (us)": 1699.4449999999943,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CPU",
+      "K": 1,
+      "Rank": 4,
+      "Operator": "aten::sum",
+      "Calls": 102,
+      "Self CPU (us)": 675.4220000000023,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CPU",
+      "K": 1,
+      "Rank": 5,
+      "Operator": "aten::mul",
+      "Calls": 205,
+      "Self CPU (us)": 602.8479999999909,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CPU",
+      "K": 1,
+      "Rank": 6,
+      "Operator": "aten::as_strided",
+      "Calls": 611,
+      "Self CPU (us)": 378.85199999999986,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CPU",
+      "K": 1,
+      "Rank": 7,
+      "Operator": "aten::select",
+      "Calls": 101,
+      "Self CPU (us)": 325.92200000000594,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CPU",
+      "K": 1,
+      "Rank": 8,
+      "Operator": "aten::add_",
+      "Calls": 150,
+      "Self CPU (us)": 315.58100000000286,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CPU",
+      "K": 1,
+      "Rank": 9,
+      "Operator": "aten::reshape",
+      "Calls": 301,
+      "Self CPU (us)": 311.8109999999806,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CPU",
+      "K": 1,
+      "Rank": 10,
+      "Operator": "aten::div",
+      "Calls": 102,
+      "Self CPU (us)": 272.8269999999993,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CUDA",
+      "K": 1,
+      "Rank": 1,
+      "Operator": "cudaLaunchKernel",
+      "Calls": 989,
+      "Self CPU (us)": 6633.808000000002,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CUDA",
+      "K": 1,
+      "Rank": 2,
+      "Operator": "aten::index",
+      "Calls": 301,
+      "Self CPU (us)": 3957.9439999999386,
+      "Self device (us)": 1279.7300000000123
+    },
+    {
+      "Device": "CUDA",
+      "K": 1,
+      "Rank": 3,
+      "Operator": "Activity Buffer Request",
+      "Calls": 1,
+      "Self CPU (us)": 2152.174,
+      "Self device (us)": 3.9039999999999964
+    },
+    {
+      "Device": "CUDA",
+      "K": 1,
+      "Rank": 4,
+      "Operator": "aten::mul",
+      "Calls": 205,
+      "Self CPU (us)": 2073.5050000000265,
+      "Self device (us)": 545.531999999981
+    },
+    {
+      "Device": "CUDA",
+      "K": 1,
+      "Rank": 5,
+      "Operator": "aten::sum",
+      "Calls": 102,
+      "Self CPU (us)": 1630.801000000005,
+      "Self device (us)": 590.6550000000225
+    },
+    {
+      "Device": "CUDA",
+      "K": 1,
+      "Rank": 6,
+      "Operator": "aten::abs",
+      "Calls": 10,
+      "Self CPU (us)": 1186.4470000000074,
+      "Self device (us)": 13.632000000000517
+    },
+    {
+      "Device": "CUDA",
+      "K": 1,
+      "Rank": 7,
+      "Operator": "aten::add_",
+      "Calls": 150,
+      "Self CPU (us)": 1049.8889999999928,
+      "Self device (us)": 370.90899999999965
+    },
+    {
+      "Device": "CUDA",
+      "K": 1,
+      "Rank": 8,
+      "Operator": "aten::sub",
+      "Calls": 100,
+      "Self CPU (us)": 1007.489000000026,
+      "Self device (us)": 249.14899999999852
+    },
+    {
+      "Device": "CUDA",
+      "K": 1,
+      "Rank": 9,
+      "Operator": "aten::div",
+      "Calls": 102,
+      "Self CPU (us)": 935.4009999999953,
+      "Self device (us)": 312.8969999999981
+    },
+    {
+      "Device": "CUDA",
+      "K": 1,
+      "Rank": 10,
+      "Operator": "aten::select",
+      "Calls": 100,
+      "Self CPU (us)": 392.18700000000445,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CPU",
+      "K": 128,
+      "Rank": 1,
+      "Operator": "aten::index",
+      "Calls": 301,
+      "Self CPU (us)": 3066.9250000000234,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CPU",
+      "K": 128,
+      "Rank": 2,
+      "Operator": "aten::mul",
+      "Calls": 205,
+      "Self CPU (us)": 1142.855000000001,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CPU",
+      "K": 128,
+      "Rank": 3,
+      "Operator": "aten::sum",
+      "Calls": 102,
+      "Self CPU (us)": 987.7699999999908,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CPU",
+      "K": 128,
+      "Rank": 4,
+      "Operator": "aten::reshape",
+      "Calls": 301,
+      "Self CPU (us)": 647.0740000000008,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CPU",
+      "K": 128,
+      "Rank": 5,
+      "Operator": "aten::add_",
+      "Calls": 150,
+      "Self CPU (us)": 559.2339999999867,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CPU",
+      "K": 128,
+      "Rank": 6,
+      "Operator": "aten::select",
+      "Calls": 101,
+      "Self CPU (us)": 448.7709999999937,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CPU",
+      "K": 128,
+      "Rank": 7,
+      "Operator": "aten::as_strided",
+      "Calls": 611,
+      "Self CPU (us)": 391.7349999999967,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CPU",
+      "K": 128,
+      "Rank": 8,
+      "Operator": "aten::div",
+      "Calls": 102,
+      "Self CPU (us)": 337.32599999999957,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CPU",
+      "K": 128,
+      "Rank": 9,
+      "Operator": "aten::unsqueeze",
+      "Calls": 101,
+      "Self CPU (us)": 330.1189999999986,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CPU",
+      "K": 128,
+      "Rank": 10,
+      "Operator": "aten::sub",
+      "Calls": 100,
+      "Self CPU (us)": 324.6640000000025,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CUDA",
+      "K": 128,
+      "Rank": 1,
+      "Operator": "cudaLaunchKernel",
+      "Calls": 989,
+      "Self CPU (us)": 6750.770000000015,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CUDA",
+      "K": 128,
+      "Rank": 2,
+      "Operator": "aten::index",
+      "Calls": 301,
+      "Self CPU (us)": 4354.837000000009,
+      "Self device (us)": 1720.14900000001
+    },
+    {
+      "Device": "CUDA",
+      "K": 128,
+      "Rank": 3,
+      "Operator": "aten::mul",
+      "Calls": 205,
+      "Self CPU (us)": 2198.572999999994,
+      "Self device (us)": 644.9220000000232
+    },
+    {
+      "Device": "CUDA",
+      "K": 128,
+      "Rank": 4,
+      "Operator": "Activity Buffer Request",
+      "Calls": 1,
+      "Self CPU (us)": 2115.13,
+      "Self device (us)": 2.912000000000262
+    },
+    {
+      "Device": "CUDA",
+      "K": 128,
+      "Rank": 5,
+      "Operator": "aten::sum",
+      "Calls": 102,
+      "Self CPU (us)": 1677.513,
+      "Self device (us)": 676.8199999999874
+    },
+    {
+      "Device": "CUDA",
+      "K": 128,
+      "Rank": 6,
+      "Operator": "aten::sub",
+      "Calls": 100,
+      "Self CPU (us)": 1100.5829999999924,
+      "Self device (us)": 252.92299999998068
+    },
+    {
+      "Device": "CUDA",
+      "K": 128,
+      "Rank": 7,
+      "Operator": "aten::add_",
+      "Calls": 150,
+      "Self CPU (us)": 1084.5840000000467,
+      "Self device (us)": 390.6850000000218
+    },
+    {
+      "Device": "CUDA",
+      "K": 128,
+      "Rank": 8,
+      "Operator": "aten::div",
+      "Calls": 102,
+      "Self CPU (us)": 1062.148000000002,
+      "Self device (us)": 314.3339999999944
+    },
+    {
+      "Device": "CUDA",
+      "K": 128,
+      "Rank": 9,
+      "Operator": "aten::reshape",
+      "Calls": 301,
+      "Self CPU (us)": 637.7889999999561,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CUDA",
+      "K": 128,
+      "Rank": 10,
+      "Operator": "aten::as_strided",
+      "Calls": 609,
+      "Self CPU (us)": 452.04100000002745,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CPU",
+      "K": 512,
+      "Rank": 1,
+      "Operator": "aten::index",
+      "Calls": 301,
+      "Self CPU (us)": 4260.30500000002,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CPU",
+      "K": 512,
+      "Rank": 2,
+      "Operator": "aten::mul",
+      "Calls": 205,
+      "Self CPU (us)": 3359.9499999999716,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CPU",
+      "K": 512,
+      "Rank": 3,
+      "Operator": "aten::sum",
+      "Calls": 102,
+      "Self CPU (us)": 1851.038000000006,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CPU",
+      "K": 512,
+      "Rank": 4,
+      "Operator": "aten::add_",
+      "Calls": 150,
+      "Self CPU (us)": 1300.5280000000078,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CPU",
+      "K": 512,
+      "Rank": 5,
+      "Operator": "aten::reshape",
+      "Calls": 301,
+      "Self CPU (us)": 613.00199999998,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CPU",
+      "K": 512,
+      "Rank": 6,
+      "Operator": "aten::as_strided",
+      "Calls": 617,
+      "Self CPU (us)": 498.86999999999034,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CPU",
+      "K": 512,
+      "Rank": 7,
+      "Operator": "aten::select",
+      "Calls": 104,
+      "Self CPU (us)": 457.71000000000157,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CPU",
+      "K": 512,
+      "Rank": 8,
+      "Operator": "aten::sub",
+      "Calls": 100,
+      "Self CPU (us)": 407.48799999999846,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CPU",
+      "K": 512,
+      "Rank": 9,
+      "Operator": "aten::div",
+      "Calls": 102,
+      "Self CPU (us)": 395.8029999999859,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CPU",
+      "K": 512,
+      "Rank": 10,
+      "Operator": "aten::unsqueeze",
+      "Calls": 104,
+      "Self CPU (us)": 375.411000000014,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CUDA",
+      "K": 512,
+      "Rank": 1,
+      "Operator": "cudaLaunchKernel",
+      "Calls": 989,
+      "Self CPU (us)": 6627.738999999991,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CUDA",
+      "K": 512,
+      "Rank": 2,
+      "Operator": "aten::index",
+      "Calls": 301,
+      "Self CPU (us)": 4130.438999999972,
+      "Self device (us)": 3234.9200000000033
+    },
+    {
+      "Device": "CUDA",
+      "K": 512,
+      "Rank": 3,
+      "Operator": "aten::mul",
+      "Calls": 205,
+      "Self CPU (us)": 2128.062000000008,
+      "Self device (us)": 866.6800000000162
+    },
+    {
+      "Device": "CUDA",
+      "K": 512,
+      "Rank": 4,
+      "Operator": "Activity Buffer Request",
+      "Calls": 1,
+      "Self CPU (us)": 2043.2520000000002,
+      "Self device (us)": 3.744000000000142
+    },
+    {
+      "Device": "CUDA",
+      "K": 512,
+      "Rank": 5,
+      "Operator": "aten::sum",
+      "Calls": 102,
+      "Self CPU (us)": 1591.013000000013,
+      "Self device (us)": 887.5780000000113
+    },
+    {
+      "Device": "CUDA",
+      "K": 512,
+      "Rank": 6,
+      "Operator": "aten::add_",
+      "Calls": 150,
+      "Self CPU (us)": 1081.0680000000089,
+      "Self device (us)": 535.5800000000213
+    },
+    {
+      "Device": "CUDA",
+      "K": 512,
+      "Rank": 7,
+      "Operator": "aten::div",
+      "Calls": 102,
+      "Self CPU (us)": 1012.0299999999966,
+      "Self device (us)": 449.94600000000446
+    },
+    {
+      "Device": "CUDA",
+      "K": 512,
+      "Rank": 8,
+      "Operator": "aten::sub",
+      "Calls": 100,
+      "Self CPU (us)": 1006.9810000000002,
+      "Self device (us)": 347.42200000000366
+    },
+    {
+      "Device": "CUDA",
+      "K": 512,
+      "Rank": 9,
+      "Operator": "aten::reshape",
+      "Calls": 301,
+      "Self CPU (us)": 630.9759999999869,
+      "Self device (us)": 0.0
+    },
+    {
+      "Device": "CUDA",
+      "K": 512,
+      "Rank": 10,
+      "Operator": "aten::select",
+      "Calls": 100,
+      "Self CPU (us)": 430.3479999999722,
+      "Self device (us)": 0.0
+    }
+  ],
+  "interpretation": "Operator counts and instrumented microsecond times only. Not unprofiled wall-clock batch latency or speedup.",
+  "limitations": "Kernel-only event counts unavailable; Python-loop overhead not isolated; instrumented CPU/device operator times may overlap; T=100 is not comparable to historical T=500 timing."
+}

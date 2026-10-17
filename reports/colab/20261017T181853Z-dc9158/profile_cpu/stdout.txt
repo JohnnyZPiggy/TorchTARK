@@ -1,0 +1,1 @@
+success: device=cpu, profiled_K=[1, 128, 512]

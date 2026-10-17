@@ -1,0 +1,89 @@
+{
+  "task": "TASK-013",
+  "issue_number": 31,
+  "experiment_type": "batched_tark_operator_profiling",
+  "cli_module": "experiments.tark_batched_profile",
+  "run_id": "20261017T181853Z-dc9158",
+  "timestamp_utc": "2026-10-17T18:19:06.102178+00:00",
+  "source_commit": "325e1abbc27bf0a8aa6bec52b90596b7a30b3ee8",
+  "python_version": "3.13.15",
+  "pytorch_version": "2.11.0+cu130",
+  "cuda_available": true,
+  "gpu_name": "Tesla T4",
+  "cpu_threads": 4,
+  "configuration": {
+    "n_rows": 1024,
+    "n_cols": 64,
+    "num_steps": 100,
+    "chain_counts": [
+      1,
+      128,
+      512
+    ],
+    "warmup": 2,
+    "seed": 7
+  },
+  "runs": {
+    "profile_cpu": {
+      "requested_device": "cpu",
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "experiments.tark_batched_profile",
+        "--device",
+        "cpu",
+        "--output-dir",
+        "/content/TorchTARK_TASK013/outputs/TASK013-20261017T181853Z-dc9158/profile_cpu",
+        "--n-rows",
+        "1024",
+        "--n-cols",
+        "64",
+        "--num-steps",
+        "100",
+        "--chain-counts",
+        "1,128,512",
+        "--warmup",
+        "2",
+        "--seed",
+        "7"
+      ],
+      "cwd": "/content/TorchTARK_TASK013",
+      "exit_code": 0,
+      "timed_out": false,
+      "started_at_utc": "2026-10-17T18:18:53.373335+00:00",
+      "finished_at_utc": "2026-10-17T18:19:01.150215+00:00",
+      "process_wall_seconds": 7.776456190000033
+    },
+    "profile_cuda": {
+      "requested_device": "cuda",
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "experiments.tark_batched_profile",
+        "--device",
+        "cuda",
+        "--output-dir",
+        "/content/TorchTARK_TASK013/outputs/TASK013-20261017T181853Z-dc9158/profile_cuda",
+        "--n-rows",
+        "1024",
+        "--n-cols",
+        "64",
+        "--num-steps",
+        "100",
+        "--chain-counts",
+        "1,128,512",
+        "--warmup",
+        "2",
+        "--seed",
+        "7"
+      ],
+      "cwd": "/content/TorchTARK_TASK013",
+      "exit_code": 0,
+      "timed_out": false,
+      "started_at_utc": "2026-10-17T18:19:01.151139+00:00",
+      "finished_at_utc": "2026-10-17T18:19:06.101836+00:00",
+      "process_wall_seconds": 4.95029566300002
+    }
+  },
+  "methodology": "One profiler-instrumented public tark_batched call per K and device; inputs, transfers and warmups outside profiler context."
+}
