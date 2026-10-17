@@ -1,0 +1,33 @@
+{
+  "selected_device": "cuda",
+  "actual_tensor_device": "cuda:0",
+  "commit": "3742c6e4205b5d7dfc60ed87ebefde21874e8bd7",
+  "pytorch_version": "2.11.0+cu130",
+  "cuda_available": true,
+  "dtype": "torch.float64",
+  "status": "success",
+  "checks": [
+    {
+      "name": "consistent",
+      "expected": [
+        4.0,
+        -0.75
+      ],
+      "observed": [
+        4.0,
+        -0.75
+      ],
+      "passed": true
+    },
+    {
+      "name": "inconsistent",
+      "expected": [
+        1.0
+      ],
+      "observed": [
+        1.0
+      ],
+      "passed": true
+    }
+  ]
+}
