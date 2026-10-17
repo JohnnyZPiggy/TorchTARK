@@ -21,6 +21,24 @@ squared-row-norm sampling with replacement. Alternatively, `row_indices` is a
 it cannot be combined with `generator` or select zero-norm rows. Inputs are
 never mutated. CPU and CUDA random streams need not match.
 
+For independent chains sharing A/b, `from torchtark import tark_batched` and
+call `Y = tark_batched(A, b, row_indices, burn_in=None, x0=None)`.
+Required integer `row_indices` has shape `[K,T]` on A.device; optional x0 has
+shape `[K,d]` with matching dtype/device. Output `[K,d]` averages each chain's
+post-update tail, default burn-in T//2. The non-autograd solver vectorizes only
+the chain axis, preserves inputs, and rejects zero-norm selected rows. Supply
+your own row sequences; no automatic sampling is provided in this API.
+This is independent-chain replay, not block RK or single-chain acceleration.
+
+```bash
+python -m experiments.tark_batched_correctness --device cpu --output-dir outputs/batched_cpu
+python -m experiments.tark_batched_correctness --device cuda --output-dir outputs/batched_cuda
+```
+
+The CLI compares K=1/K=3 worked examples against stacked scalar calls and
+writes device/commit/comparison evidence. Real CUDA validation is coordinator-run;
+no batched throughput or speedup claim is made.
+
 ```bash
 python -m experiments.tark_correctness --device cpu --output-dir outputs/tark_cpu
 python -m experiments.tark_correctness --device cuda --output-dir outputs/tark_cuda
