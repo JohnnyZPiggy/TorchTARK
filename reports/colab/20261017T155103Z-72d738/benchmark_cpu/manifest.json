@@ -1,0 +1,36 @@
+{
+  "status": "success",
+  "exit_status": 0,
+  "selected_device": "cpu",
+  "actual_tensor_device": "cpu",
+  "cuda_available": true,
+  "gpu_name": null,
+  "pytorch_version": "2.11.0+cu130",
+  "source_commit": "e909d044cfb84309aa98f4d91a81d0b59e726c37",
+  "timestamp_utc": "2026-10-17T15:49:00.104606+00:00",
+  "dtype": "torch.float32",
+  "parameters": {
+    "n_rows": 1024,
+    "n_cols": 64,
+    "num_steps": 500,
+    "warmup": 2,
+    "repeats": 5,
+    "seed": 7
+  },
+  "elapsed_ms": [
+    14.341223999963404,
+    14.008668000315083,
+    14.097981999839249,
+    14.208859000063967,
+    16.77623300020059
+  ],
+  "median_ms": 14.208859000063967,
+  "min_ms": 14.008668000315083,
+  "max_ms": 16.77623300020059,
+  "timing_method": "perf_counter wall clock; CUDA synchronized before/after each call",
+  "timed_region": "public tark call including validation and default zero x0; burn_in=T//2",
+  "excluded": "input/row generation, transfers, output checks, JSON and stdout",
+  "generation": "CPU float32 randn A then b; one seeded CPU generator; CPU norm-squared multinomial replacement row sequence; transfer before timing",
+  "output_finite": true,
+  "output_checksum": -1.1226463426137343
+}
