@@ -92,6 +92,35 @@ profiling is not comparable to historical T=500 latency. Use the reviewed
 batched benchmark CLI for comparative performance; GPU profiling remains
 pending coordinator execution. No compile/custom kernels or optimization here.
 
+Opt-in compiler feasibility pilot (unchanged eager API, no adapter):
+
+```bash
+python -m experiments.tark_batched_compile_pilot --device cpu --output-dir outputs/compile_cpu --backend aot_eager --chain-counts 1,128,512 --num-steps 4
+```
+
+The default `--route both` reports strict fullgraph support separately from
+regular graph-break-permitting execution. Unsupported strict mode is recorded;
+`--route fullgraph` alone fails if unsupported. Backend errors or absence of
+actual backend graph executions always fail, never silently rerun eager.
+`aot_eager`/`eager` are diagnostic backends; optional `--backend inductor`
+requires working native compiler support and may fail on the local platform.
+Graphs list targets and execution counts: validation-only capture does not
+establish compiled RK-loop execution or fullgraph success. Public validation
+remains intact. CPU/CUDA share seeded CPU inputs/replay histories.
+
+Flags include `--dtype float32|float64`, `--burn-in default|B`, `--nonzero-x0`,
+warmup/repeats/seed and dimensions. Caps: <=3 K values in 1..512, n<=1024,
+d<=64, T<=10, warmup<=3, repeats<=5. Cold-start includes tracing, backend work
+and first execution, separately from alternating raw eager/compiled steady
+timings with CUDA synchronization. Backend execution counters add overhead;
+Dynamo counter deltas are version-dependent, true recompiles may be unavailable.
+New backend submissions during steady timing fail. Inputs/output are checked
+outside timing with dtype-specific tolerances. Native compilation has no hard
+timeout guarantee; keep this pilot small. No traces, credentials or uploads.
+Regular mode explicitly contains eager regions and graph breaks. Do not infer
+GPU speedup, single-chain acceleration or T500 feasibility from this pilot;
+real CUDA evidence remains coordinator-run after review.
+
 ```bash
 python -m experiments.tark_correctness --device cpu --output-dir outputs/tark_cpu
 python -m experiments.tark_correctness --device cuda --output-dir outputs/tark_cuda
