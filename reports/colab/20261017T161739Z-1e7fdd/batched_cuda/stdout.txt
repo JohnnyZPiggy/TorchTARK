@@ -1,0 +1,1 @@
+success: requested=cuda, actual=cuda:0
