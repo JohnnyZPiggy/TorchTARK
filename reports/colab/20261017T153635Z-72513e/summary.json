@@ -1,0 +1,30 @@
+{
+  "run_id": "20261017T153635Z-72513e",
+  "all_passed": true,
+  "results": {
+    "smoke_cpu": {
+      "device": "cpu",
+      "exit_code": 0,
+      "status": "PASS",
+      "actual_device": "cpu"
+    },
+    "smoke_cuda": {
+      "device": "cuda",
+      "exit_code": 0,
+      "status": "PASS",
+      "actual_device": "cuda:0"
+    },
+    "tark_cpu": {
+      "device": "cpu",
+      "exit_code": 0,
+      "status": "PASS",
+      "actual_device": "cpu"
+    },
+    "tark_cuda": {
+      "device": "cuda",
+      "exit_code": 0,
+      "status": "PASS",
+      "actual_device": "cuda:0"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "selected_device": "cuda",
+  "actual_tensor_device": "cuda:0",
+  "pytorch_version": "2.11.0+cu130",
+  "cuda_available": true,
+  "seed": 0,
+  "status": "success",
+  "result": [
+    17.0,
+    39.0
+  ]
+}

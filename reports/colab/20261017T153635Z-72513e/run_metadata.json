@@ -1,0 +1,34 @@
+{
+  "run_id": "20261017T153635Z-72513e",
+  "timestamp_utc": "2026-10-17T15:36:43.808747+00:00",
+  "source_commit": "3742c6e4205b5d7dfc60ed87ebefde21874e8bd7",
+  "pytorch_version": "2.11.0+cu130",
+  "cuda_available": true,
+  "gpu": "Tesla T4",
+  "experiments": {
+    "smoke_cpu": {
+      "device": "cpu",
+      "exit_code": 0,
+      "status": "PASS",
+      "actual_device": "cpu"
+    },
+    "smoke_cuda": {
+      "device": "cuda",
+      "exit_code": 0,
+      "status": "PASS",
+      "actual_device": "cuda:0"
+    },
+    "tark_cpu": {
+      "device": "cpu",
+      "exit_code": 0,
+      "status": "PASS",
+      "actual_device": "cpu"
+    },
+    "tark_cuda": {
+      "device": "cuda",
+      "exit_code": 0,
+      "status": "PASS",
+      "actual_device": "cuda:0"
+    }
+  }
+}
