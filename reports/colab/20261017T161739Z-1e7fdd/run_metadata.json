@@ -1,0 +1,19 @@
+{
+  "run_id": "20261017T161739Z-1e7fdd",
+  "timestamp_utc": "2026-10-17T16:17:43.860061+00:00",
+  "source_commit": "9b658a282ca0bfa4df41dec1f32e45ec06fc3493",
+  "python_version": "3.13.15",
+  "pytorch_version": "2.11.0+cu130",
+  "cuda_available": true,
+  "gpu_name": "Tesla T4",
+  "experiments": {
+    "batched_cpu": {
+      "requested_device": "cpu",
+      "exit_code": 0
+    },
+    "batched_cuda": {
+      "requested_device": "cuda",
+      "exit_code": 0
+    }
+  }
+}

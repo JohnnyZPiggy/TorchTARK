@@ -1,0 +1,111 @@
+{
+  "status": "success",
+  "selected_device": "cuda",
+  "actual_tensor_device": "cuda:0",
+  "source_commit": "9b658a282ca0bfa4df41dec1f32e45ec06fc3493",
+  "pytorch_version": "2.11.0+cu130",
+  "dtype": "torch.float64",
+  "cuda_available": true,
+  "comparisons": [
+    {
+      "case": "consistent",
+      "chains": 1,
+      "burn_in": 0,
+      "expected": [
+        [
+          4.0,
+          -0.75
+        ]
+      ],
+      "observed": [
+        [
+          4.0,
+          -0.75
+        ]
+      ],
+      "max_abs_error": 0.0,
+      "passed": true
+    },
+    {
+      "case": "consistent",
+      "chains": 3,
+      "burn_in": 0,
+      "expected": [
+        [
+          4.0,
+          -0.75
+        ],
+        [
+          2.0,
+          -1.0
+        ],
+        [
+          4.0,
+          -0.25
+        ]
+      ],
+      "observed": [
+        [
+          4.0,
+          -0.75
+        ],
+        [
+          2.0,
+          -1.0
+        ],
+        [
+          4.0,
+          -0.25
+        ]
+      ],
+      "max_abs_error": 0.0,
+      "passed": true
+    },
+    {
+      "case": "inconsistent",
+      "chains": 1,
+      "burn_in": 0,
+      "expected": [
+        [
+          1.0
+        ]
+      ],
+      "observed": [
+        [
+          1.0
+        ]
+      ],
+      "max_abs_error": 0.0,
+      "passed": true
+    },
+    {
+      "case": "inconsistent",
+      "chains": 3,
+      "burn_in": 0,
+      "expected": [
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          0.5
+        ]
+      ],
+      "observed": [
+        [
+          1.0
+        ],
+        [
+          1.0
+        ],
+        [
+          0.5
+        ]
+      ],
+      "max_abs_error": 0.0,
+      "passed": true
+    }
+  ]
+}
