@@ -1,0 +1,119 @@
+{
+  "status": "success",
+  "exit_status": 0,
+  "selected_device": "cpu",
+  "actual_tensor_device": "cpu",
+  "cuda_available": true,
+  "gpu_name": null,
+  "pytorch_version": "2.11.0+cu130",
+  "source_commit": "e3b7db3061c0c3d927fe680c0ba8c0ef01848683",
+  "timestamp_utc": "2026-10-17T17:32:10.271011+00:00",
+  "dtype": "torch.float32",
+  "parameters": {
+    "n_rows": 1024,
+    "n_cols": 64,
+    "num_steps": 500,
+    "warmup": 2,
+    "repeats": 5,
+    "seed": 7,
+    "chain_counts": [
+      1,
+      8,
+      32,
+      128,
+      512
+    ]
+  },
+  "measurements": [
+    {
+      "chains": 1,
+      "elapsed_ms": [
+        21.998338999992484,
+        22.76825500001678,
+        21.67637200000172,
+        23.947273999993968,
+        21.80262600001015
+      ],
+      "median_ms": 21.998338999992484,
+      "min_ms": 21.67637200000172,
+      "max_ms": 23.947273999993968,
+      "chains_per_second": 45.45797753186464,
+      "chain_steps_per_second": 22728.98876593232,
+      "output_finite": true,
+      "output_checksum": -1.1226466346997768
+    },
+    {
+      "chains": 8,
+      "elapsed_ms": [
+        24.98663099999021,
+        24.88566399998149,
+        26.327890000004572,
+        26.49872099999584,
+        26.329677000006768
+      ],
+      "median_ms": 26.327890000004572,
+      "min_ms": 24.88566399998149,
+      "max_ms": 26.49872099999584,
+      "chains_per_second": 303.86027896647283,
+      "chain_steps_per_second": 151930.13948323642,
+      "output_finite": true,
+      "output_checksum": -3.2778116906556534
+    },
+    {
+      "chains": 32,
+      "elapsed_ms": [
+        27.891457999999147,
+        27.1523259999924,
+        28.842470999990155,
+        27.05075000000079,
+        30.754614000017
+      ],
+      "median_ms": 27.891457999999147,
+      "min_ms": 27.05075000000079,
+      "max_ms": 30.754614000017,
+      "chains_per_second": 1147.3046694081384,
+      "chain_steps_per_second": 573652.3347040692,
+      "output_finite": true,
+      "output_checksum": -11.909836081238609
+    },
+    {
+      "chains": 128,
+      "elapsed_ms": [
+        36.14119200000232,
+        35.95523999999273,
+        34.715951999999106,
+        34.68381300001511,
+        37.304050999978244
+      ],
+      "median_ms": 35.95523999999273,
+      "min_ms": 34.68381300001511,
+      "max_ms": 37.304050999978244,
+      "chains_per_second": 3559.9817995937697,
+      "chain_steps_per_second": 1779990.8997968847,
+      "output_finite": true,
+      "output_checksum": -41.17269803416366
+    },
+    {
+      "chains": 512,
+      "elapsed_ms": [
+        84.88820400000918,
+        75.4703859999779,
+        63.49123399999712,
+        62.454308000013725,
+        62.69839899999852
+      ],
+      "median_ms": 63.49123399999712,
+      "min_ms": 62.454308000013725,
+      "max_ms": 84.88820400000918,
+      "chains_per_second": 8064.105353504757,
+      "chain_steps_per_second": 4032052.676752378,
+      "output_finite": true,
+      "output_checksum": -154.04398684379885
+    }
+  ],
+  "random_policy": "One seeded CPU generator: float32 randn A then b, then norm-squared replacement multinomial max(K)*T rows reshaped [max(K),T]; each K uses prefix; transfers before timing",
+  "timing_method": "perf_counter wall clock; CUDA synchronize before/after every timed call; warmups unrecorded",
+  "timed_region": "public tark_batched including validation, default zero x0 and burn_in=T//2",
+  "excluded": "generation, stochastic sampling, transfers, output checks, JSON and stdout",
+  "caveats": "Batch latency and aggregate chain throughput, not single-chain speedup. K=1 uses batched API, not comparable to scalar tark benchmark. Compare CPU/GPU only with matched inputs in same runtime."
+}

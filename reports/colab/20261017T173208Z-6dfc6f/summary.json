@@ -1,0 +1,75 @@
+{
+  "task": "TASK-010",
+  "issue_number": 23,
+  "experiment_type": "batched_tark_chain_scaling_benchmark",
+  "cli_module": "experiments.tark_batched_benchmark",
+  "run_id": "20261017T173208Z-6dfc6f",
+  "source_commit": "e3b7db3061c0c3d927fe680c0ba8c0ef01848683",
+  "status": "PASS",
+  "validation_errors": [],
+  "configuration": {
+    "n_rows": 1024,
+    "n_cols": 64,
+    "num_steps": 500,
+    "chain_counts": [
+      1,
+      8,
+      32,
+      128,
+      512
+    ],
+    "warmup": 2,
+    "repeats": 5,
+    "seed": 7
+  },
+  "gpu_name": "Tesla T4",
+  "per_k": [
+    {
+      "K": 1,
+      "CPU_ms": 21.998338999992484,
+      "GPU_ms": 56.4334469999892,
+      "CPU_over_GPU": 0.3898103016814956,
+      "CPU_chains_per_s": 45.45797753186464,
+      "GPU_chains_per_s": 17.719987935526806,
+      "checksum_close": true
+    },
+    {
+      "K": 8,
+      "CPU_ms": 26.327890000004572,
+      "GPU_ms": 59.024318000012954,
+      "CPU_over_GPU": 0.4460515748779815,
+      "CPU_chains_per_s": 303.86027896647283,
+      "GPU_chains_per_s": 135.53735597585802,
+      "checksum_close": true
+    },
+    {
+      "K": 32,
+      "CPU_ms": 27.891457999999147,
+      "GPU_ms": 59.07184400001597,
+      "CPU_over_GPU": 0.47216162745811024,
+      "CPU_chains_per_s": 1147.3046694081384,
+      "GPU_chains_per_s": 541.7132398980358,
+      "checksum_close": true
+    },
+    {
+      "K": 128,
+      "CPU_ms": 35.95523999999273,
+      "GPU_ms": 58.174428000000944,
+      "CPU_over_GPU": 0.6180591926059358,
+      "CPU_chains_per_s": 3559.9817995937697,
+      "GPU_chains_per_s": 2200.2794767487517,
+      "checksum_close": true
+    },
+    {
+      "K": 512,
+      "CPU_ms": 63.49123399999712,
+      "GPU_ms": 59.57498899999791,
+      "CPU_over_GPU": 1.065736394848505,
+      "CPU_chains_per_s": 8064.105353504757,
+      "GPU_chains_per_s": 8594.21056712269,
+      "checksum_close": true
+    }
+  ],
+  "speed_ratio_definition": "CPU median batch latency divided by GPU median batch latency; greater than 1 means GPU faster",
+  "scope": "Eager batched independent-chain TARK fixed-row replay; sampling and transfers excluded from timing"
+}
