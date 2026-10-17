@@ -1,0 +1,20 @@
+{
+  "run_id": "20261017T155103Z-72d738",
+  "source_commit": "e909d044cfb84309aa98f4d91a81d0b59e726c37",
+  "all_passed": true,
+  "cpu_median_ms": 14.208859000063967,
+  "cuda_median_ms": 57.08010499984084,
+  "cpu_to_gpu_ratio": 0.24892839633184952,
+  "gpu_name": "Tesla T4",
+  "pytorch_version": "2.11.0+cu130",
+  "parameters": {
+    "n_rows": 1024,
+    "n_cols": 64,
+    "num_steps": 500,
+    "warmup": 2,
+    "repeats": 5,
+    "seed": 7
+  },
+  "note": "Eager fixed-row TARK benchmark, not end-to-end sampling",
+  "stdout_stderr": "Not captured by the original shell cells"
+}
